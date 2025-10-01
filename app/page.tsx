@@ -75,7 +75,7 @@ export default function LandingPage() {
         </div>
         <div className="hidden lg:block absolute z-[11] -bottom-[13rem] left-1/2 transform -translate-x-1/2 w-[65vw] max-w-[1600px] pointer-events-none">
           <Image
-            src="/resume-placeholder.png"
+            src="/Resume-placeholder.png"
             alt="Resume Placeholder"
             width={1600}
             height={1200}
@@ -100,7 +100,7 @@ export default function LandingPage() {
         <div className="grid lg:grid-cols-2 mt-20 mb-24 lg:mb-0 pointer-events-none gap-y-20 lg:gap-y-0">
           <div className="relative">
             <Image
-              src="/placeholder_you.svg"
+              src="/Placeholder_you.svg"
               alt="Understands you"
               width={800}
               height={600}
@@ -116,7 +116,7 @@ export default function LandingPage() {
           </div>
           <div className="relative">
             <Image
-              src="/placeholder_role.png"
+              src="/Placeholder_role.png"
               alt="Hears what you hear"
               width={800}
               height={600}
@@ -133,7 +133,7 @@ export default function LandingPage() {
         </div>
         <div className="relative z-[1] overflow-hidden pointer-events-none">
           <Image
-            src="/placeholder_baby.png"
+            src="/Placeholder_baby.png"
             alt="Answers anything"
             width={1600}
             height={600}

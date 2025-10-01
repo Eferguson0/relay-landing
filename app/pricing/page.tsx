@@ -24,24 +24,25 @@ export default function PricingPage() {
 
   const plans = {
     free: {
-      name: "Free",
+      name: "Basic",
       price: "$0",
       period: "/mo",
-      description: "Solidify your core resume and experience resume tailoring.",
+      description: "Easy drafting with AI",
       features: [
-        "Core resume development",
-        "Opportunity insights",
-        "2 tailored resumes per month",
+        "Intuitive AI drafting interface",
+        "Draft emails, internal memos/messages, documents, and more",
+        "15 drafts per month",
+        "Personalized tone and style",
       ]
     },
     pro: {
       name: "Pro",
-      price: "$20",
+      price: "$7",
       period: "/mo",
-      description: "Free plus unlimited resume tailoring and priority support.",
+      description: "Unlimited messages, documents, and drafts",
       features: [
-        "Everything in Free",
-        "Unlimited resume tailoring",
+        "Everything in Basic",
+        "Unlimited document creation",
         "Priority support"
       ]
     },
@@ -49,10 +50,12 @@ export default function PricingPage() {
       name: "Organization",
       price: "Custom",
       period: "",
-      description: "For career development focused organizations.",
+      description: "Custom plans for comms-driven teams.",
       features: [
         "Everything in Pro",
         "Tailored onboarding",
+        "Custom document types",
+        "Custom integrations",
         "Discounted seat-based pricing"
       ]
     }
@@ -62,9 +65,12 @@ export default function PricingPage() {
     {
       category: "Features",
       items: [
-        { name: "Core resume development", free: true, pro: true, enterprise: true },
-        { name: "Opportunity insights", free: true, pro: true, enterprise: true },
-        { name: "Tailored resumes / month", free: "5", pro: "Unlimited", enterprise: "Unlimited" },
+        { name: "AI-powered drafting interface", free: true, pro: true, enterprise: true },
+        { name: "Support for emails, internal memos/messages, and documents", free: true, pro: true, enterprise: true },
+        { name: "Personalized tone and style", free: true, pro: true, enterprise: true },
+        { name: "Drafts per month", free: "15", pro: "Unlimited", enterprise: "Unlimited" },
+        { name: "Custom integrations", free: false, pro: false, enterprise: true },
+        { name: "Custom document types", free: false, pro: false, enterprise: true },
       ]
     },
     {
@@ -97,10 +103,10 @@ export default function PricingPage() {
       <div className="mx-auto max-w-7xl py-32 sm:py-36">
         <div className="mx-auto max-w-lg px-6 lg:max-w-7xl lg:px-8 select-none">
           <h1 className="flex flex-col text-5xl font-medium tracking-tight text-balance text-foreground sm:text-6xl lg:text-pretty">
-            Start for free. <span>End with an offer.</span>
+            Write faster. <span>Draft smarter.</span>
           </h1>
           <p className="flex flex-col mt-6 max-w-lg text-lg font-base text-pretty text-muted-foreground max-lg:mx-auto sm:text-xl/8">
-            No investment until you've seen it work.
+          With Relay, both teams and individuals can write in an AI-powered drafting interface.
             {/* <span>Please start with our Free plan.</span> */}
           </p>
         </div>
@@ -109,10 +115,10 @@ export default function PricingPage() {
         <div className="isolate mx-auto mt-16 grid max-w-md grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3 px-6 lg:px-8">
           {/* Free Plan */}
           <div className="ring-border rounded-lg p-6 ring-1 bg-card">
-            <h3 className="text-primary text-[40px]/8 font-[400] select-none">Free</h3>
+            <h3 className="text-primary text-[40px]/8 font-[400] select-none">{plans.free.name}</h3>
             <p className="mt-4 flex items-baseline gap-x-1">
-              <span className="text-muted-foreground text-4xl font-[400] tracking-tight select-none">$0</span>
-              <span className="text-muted-foreground text-3xl/6 font-[400] select-none">/mo</span>
+              <span className="text-muted-foreground text-4xl font-[400] tracking-tight select-none">{plans.free.price}</span>
+              <span className="text-muted-foreground text-3xl/6 font-[400] select-none">{plans.free.period}</span>
             </p>
             <p className="text-muted-foreground mt-16 text-sm/4.5 select-none">{plans.free.description}</p>
             <div className="mt-10.5 relative flex flex-col items-center w-full">
@@ -132,10 +138,10 @@ export default function PricingPage() {
 
           {/* Pro Plan */}
           <div className="ring-border rounded-lg p-6 ring-1 bg-card">
-            <h3 className="text-primary text-[40px]/8 font-[400] select-none">Pro</h3>
+            <h3 className="text-primary text-[40px]/8 font-[400] select-none">{plans.pro.name}</h3>
             <p className="mt-4 flex items-baseline gap-x-1">
-              <span className="text-muted-foreground text-4xl font-[400] tracking-tight select-none">$20</span>
-              <span className="text-muted-foreground text-3xl/6 font-[400] select-none">/mo</span>
+              <span className="text-muted-foreground text-4xl font-[400] tracking-tight select-none">{plans.pro.price}</span>
+              <span className="text-muted-foreground text-3xl/6 font-[400] select-none">{plans.pro.period}</span>
             </p>
             <p className="text-muted-foreground mt-16 text-sm/4.5 select-none">{plans.pro.description}</p>
             <Button className="bg-primary text-primary-foreground shadow-xs hover:bg-primary/90 mt-6 w-full rounded-lg px-3 py-2 text-center text-sm/6 font-semibold select-none">
@@ -144,7 +150,7 @@ export default function PricingPage() {
             <ul className="text-muted-foreground mt-8 space-y-3 py-4 text-sm/6 xl:mt-10">
               {plans.pro.features.map((feature, index) => (
                 <li key={index} className="flex gap-x-3">
-                  {feature === "Everything in Free" ? (
+                  {feature.startsWith("Everything in") ? (
                     <Plus className="text-primary h-6 w-4 flex-none" />
                   ) : (
                     <Check className="text-emerald-600 h-6 w-4 flex-none" />
@@ -157,9 +163,9 @@ export default function PricingPage() {
 
           {/* Enterprise Plan */}
           <div className="ring-border rounded-lg p-6 ring-1 bg-card">
-            <h3 className="text-primary text-[40px]/8 font-[400] select-none">Organization</h3>
+            <h3 className="text-primary text-[40px]/8 font-[400] select-none">{plans.enterprise.name}</h3>
             <p className="mt-4 flex items-baseline gap-x-1">
-              <span className="text-muted-foreground text-4xl font-[400] tracking-tight select-none">Custom</span>
+              <span className="text-muted-foreground text-4xl font-[400] tracking-tight select-none">{plans.enterprise.price}</span>
             </p>
             <p className="text-muted-foreground mt-16 text-sm/4.5 select-none">{plans.enterprise.description}</p>
             <Button className="bg-primary text-primary-foreground shadow-xs hover:bg-primary/90 mt-6 w-full rounded-lg px-3 py-2 text-center text-sm/6 font-semibold select-none">
@@ -168,7 +174,7 @@ export default function PricingPage() {
             <ul className="text-muted-foreground mt-8 space-y-3 py-4 text-sm/6 xl:mt-10">
               {plans.enterprise.features.map((feature, index) => (
                 <li key={index} className="flex gap-x-3">
-                  {feature === "Everything in Pro" ? (
+                  {feature.startsWith("Everything in") ? (
                     <Plus className="text-primary h-6 w-4 flex-none" />
                   ) : (
                     <Check className="text-emerald-600 h-6 w-4 flex-none" />
@@ -195,17 +201,17 @@ export default function PricingPage() {
                 <td className="p-0"></td>
                 <th scope="col" className="p-0">
                   <div className="text-md font-semibold text-primary select-none">
-                    Free <span className="sr-only">plan</span>
+                    {plans.free.name} <span className="sr-only">plan</span>
                   </div>
                 </th>
                 <th scope="col" className="p-0">
                   <div className="text-md font-semibold text-primary select-none">
-                    Pro <span className="sr-only">plan</span>
+                    {plans.pro.name} <span className="sr-only">plan</span>
                   </div>
                 </th>
                 <th scope="col" className="p-0">
                   <div className="text-md font-semibold text-primary select-none">
-                    Organization <span className="sr-only">plan</span>
+                    {plans.enterprise.name} <span className="sr-only">plan</span>
                   </div>
                 </th>
               </tr>
@@ -278,7 +284,7 @@ export default function PricingPage() {
                       : 'border-border text-muted-foreground'
                   }`}
                 >
-                  {plan.charAt(0).toUpperCase() + plan.slice(1)}
+                  {plans[plan].name}
                 </button>
               ))}
             </div>

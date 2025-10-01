@@ -21,7 +21,7 @@ export default function Footer() {
             </li>
           </ul>
           <p className="text-sm mt-4">
-            © 2025 Aspire
+            © 2025 Relay
           </p>
         </div>
         <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
@@ -32,12 +32,12 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="https://x.com/Aspire" className="text-sm hover:text-muted-foreground">
+              <Link href="https://x.com/Relay" className="text-sm hover:text-muted-foreground">
                 X
               </Link>
             </li>
             <li>
-              <Link href="https://github.com/Aspire" className="text-sm hover:text-muted-foreground">
+              <Link href="https://github.com/Relay" className="text-sm hover:text-muted-foreground">
                 GitHub
               </Link>
             </li>

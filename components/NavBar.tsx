@@ -31,7 +31,7 @@ export default function NavBar() {
                 href="/"
               >
                 <Logo className="w-8 h-8 text-foreground" />
-                <span className="text-lg font-medium transition text-foreground align-middle">Aspire</span>
+                <span className="text-lg font-medium transition text-foreground align-middle">Relay</span>
               </Link>
             </div>
             <div className="flex lg:hidden">

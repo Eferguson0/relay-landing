@@ -62,7 +62,7 @@ export default function LandingPage() {
         </div>
         <div className="relative text-center z-[1] mx-auto max-w-5xl lg:pb-32">
           <h1 className="text-4xl font-medium tracking-tight text-balance text-foreground sm:text-6xl md:text-8xl">
-            AI is the future. <br /> Let it build yours.
+            AI is the future. <br /> Let it write yours.
           </h1>
           <p className="mx-auto max-w-lg md:max-w-2xl mt-8 text-md sm:text-lg md:text-2xl font-normal text-balance text-foreground">
             Aspire engineers your resume to beat screening algorithms and land you interviews.

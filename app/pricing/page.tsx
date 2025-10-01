@@ -106,7 +106,7 @@ export default function PricingPage() {
             Write faster. <span>Draft smarter.</span>
           </h1>
           <p className="flex flex-col mt-6 max-w-lg text-lg font-base text-pretty text-muted-foreground max-lg:mx-auto sm:text-xl/8">
-          With Relay, both teams and individuals can write in an AI-powered drafting interface.
+          With Relay, both teams and individuals can streamline communication with AI.
             {/* <span>Please start with our Free plan.</span> */}
           </p>
         </div>

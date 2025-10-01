@@ -9,6 +9,58 @@ import NavBar from "@/components/NavBar"
 import Footer from "@/components/Footer"
 import Logo from "@/components/ui/Logo"
 
+// RotatingText component with typing animation
+const RotatingText = ({ 
+  texts, 
+  displayDuration = 3000, 
+  typingSpeed = 150, 
+  deletingSpeed = 75,
+  pauseDuration = 1000 
+}: {
+  texts: string[]
+  displayDuration?: number
+  typingSpeed?: number
+  deletingSpeed?: number
+  pauseDuration?: number
+}) => {
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [currentText, setCurrentText] = useState('')
+  const [isDeleting, setIsDeleting] = useState(false)
+
+  useEffect(() => {
+    const fullText = texts[currentIndex]
+    
+    const timeout = setTimeout(() => {
+      if (!isDeleting && currentText !== fullText) {
+        // Typing phase
+        setCurrentText(fullText.substring(0, currentText.length + 1))
+      } else if (isDeleting && currentText !== '') {
+        // Deleting phase
+        setCurrentText(currentText.substring(0, currentText.length - 1))
+      } else if (!isDeleting && currentText === fullText) {
+        // Finished typing, start deleting after display duration
+        const pauseTimeout = setTimeout(() => {
+          setIsDeleting(true)
+        }, displayDuration)
+        return () => clearTimeout(pauseTimeout)
+      } else if (isDeleting && currentText === '') {
+        // Finished deleting, move to next text
+        setIsDeleting(false)
+        setCurrentIndex((prev) => (prev + 1) % texts.length)
+      }
+    }, isDeleting ? deletingSpeed : typingSpeed)
+
+    return () => clearTimeout(timeout)
+  }, [currentText, currentIndex, isDeleting, texts, displayDuration, typingSpeed, deletingSpeed])
+
+  return (
+      <span className="inline-block relative">
+        {currentText}
+        <span className="absolute w-1 h-8 ml-1 top-1 sm:w-1.5 sm:h-12 sm:ml-1 sm:top-1 md:w-2 md:h-20 md:ml-2 md:top-2 bg-foreground" style={{ animation: 'fadeOut 1s ease-in-out infinite' }}></span>
+      </span>
+  )
+}
+
 export default function LandingPage() {
   const [activeSection, setActiveSection] = useState(0)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -61,11 +113,20 @@ export default function LandingPage() {
           ></div>
         </div>
         <div className="relative text-center z-[1] mx-auto max-w-5xl lg:pb-32">
-          <h1 className="text-4xl font-medium tracking-tight text-balance text-foreground sm:text-6xl md:text-8xl">
-            AI is the future. <br /> Let it write yours.
+          <h1 className="text-4xl font-medium tracking-tight text-balance text-foreground sm:text-6xl md:text-7xl">
+            <span className="text-2xl sm:text-3xl md:text-4xl text-muted-foreground">The AI notepad for drafting</span><br />
+            <span className="text-4xl sm:text-6xl md:text-8xl block mt-4">
+              <RotatingText 
+                texts={["emails", "slack messages", "documents", "teams messages", "proposals", "reports"]}
+                displayDuration={3500}
+                typingSpeed={180}
+                deletingSpeed={75}
+                pauseDuration={1000}
+              />
+            </span>
           </h1>
-          <p className="mx-auto max-w-lg md:max-w-2xl mt-8 text-md sm:text-lg md:text-2xl font-normal text-balance text-foreground">
-            Aspire engineers your resume to beat screening algorithms and land you interviews.
+          <p className="mx-auto max-w-lg md:max-w-2xl mt-8 text-md sm:text-lg md:text-2xl font-normal text-balance text-muted-foreground">
+            Relay makes drafting easy through an AI-powered text editor.
           </p>
           <div className="grid items-center justify-center gap-y-2.5 mt-10">
             <Button className="flex group items-center gap-x-2 rounded-lg bg-primary text-primary-foreground px-10 py-3 text-md font-medium shadow-xs outline-none hover:-translate-y-0.5 transition hover:scale-[100.5%] hover:bg-primary/90">
@@ -254,7 +315,7 @@ export default function LandingPage() {
         className="mx-auto max-w-7xl pt-32 select-none pointer-events-none bg-background"
       >
         <h1 className="text-5xl font-medium max-w-xl m-8 text-foreground">
-          Where Aspire simplifies your search
+          Where Relay streamlines communication
         </h1>
         <div className="flex flex-col-reverse md:flex-row">
           <div className="w-full md:w-3/5 md:sticky md:top-0 md:h-screen flex items-center justify-center">
@@ -296,7 +357,7 @@ export default function LandingPage() {
             <div ref={sectionRefs[0]} className="md:min-h-screen min-h-[45rem] flex items-center overflow-hidden">
               <div className="max-w-xl">
                 <div className="p-8 lg:pl-20">
-                  <h2 className="text-4xl font-medium mb-4 text-foreground">Resume (Tailored)</h2>
+                  <h2 className="text-4xl font-medium mb-4 text-foreground">Email</h2>
                   <p className="text-xl text-foreground max-w-94">
                   For each opportunity, Aspire uses company and role research to develop a tailored resume with the most relevant skills, experience, and keywords.
                   </p>
@@ -315,7 +376,7 @@ export default function LandingPage() {
             <div ref={sectionRefs[1]} className="md:min-h-screen min-h-[45rem] flex items-center overflow-hidden">
               <div className="max-w-xl">
                 <div className="p-8 lg:pl-20">
-                  <h2 className="text-4xl font-medium mb-4 text-foreground">Opportunity Insights</h2>
+                  <h2 className="text-4xl font-medium mb-4 text-foreground">Internal Message & Memos</h2>
                   <p className="text-xl text-foreground max-w-94">
                   As we research the opportunity and tailor your resume, you'll receive insights that can be used later on for outreach and interview prep.
                   </p>
@@ -334,7 +395,7 @@ export default function LandingPage() {
             <div ref={sectionRefs[2]} className="md:min-h-screen min-h-[45rem] flex items-center overflow-hidden">
               <div className="max-w-xl">
                 <div className="p-8 lg:pl-20">
-                  <h2 className="text-4xl font-medium mb-4 text-foreground">Resume (Core)</h2>
+                  <h2 className="text-4xl font-medium mb-4 text-foreground">Documents</h2>
                   <p className="text-xl text-foreground max-w-94">
                   Aspire gains a deep understanding of your professional background to help strengthen your core resume — which serve as the foundation for tailored resumes.
                   </p>
@@ -360,7 +421,7 @@ export default function LandingPage() {
           <Logo className="w-24 h-24 text-primary mb-6" />
           <span className="uppercase text-foreground tracking-tight text-lg">Welcome to</span>
           <h1 className="mt-2 text-5xl font-medium tracking-tight text-balance text-foreground sm:text-6xl">
-            Intelligent job search.
+            Intelligent drafting.
           </h1>
           <div className="grid items-center gap-y-2.5 mt-10 justify-center text-center">
             <Button className="flex group items-center gap-x-2 rounded-lg bg-primary text-primary-foreground px-10 py-3 text-md font-semibold shadow-xs outline-none hover:-translate-y-0.5 transition hover:scale-[100.5%] hover:bg-primary/90">

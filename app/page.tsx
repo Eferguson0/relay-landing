@@ -26,8 +26,17 @@ const RotatingText = ({
   const [currentIndex, setCurrentIndex] = useState(0)
   const [currentText, setCurrentText] = useState('')
   const [isDeleting, setIsDeleting] = useState(false)
+  const [hasStarted, setHasStarted] = useState(false)
 
   useEffect(() => {
+    // Initial delay before starting animation
+    if (!hasStarted) {
+      const startTimeout = setTimeout(() => {
+        setHasStarted(true)
+      }, 800) // 800ms delay before starting
+      return () => clearTimeout(startTimeout)
+    }
+
     const fullText = texts[currentIndex]
     
     const timeout = setTimeout(() => {
@@ -51,11 +60,11 @@ const RotatingText = ({
     }, isDeleting ? deletingSpeed : typingSpeed)
 
     return () => clearTimeout(timeout)
-  }, [currentText, currentIndex, isDeleting, texts, displayDuration, typingSpeed, deletingSpeed])
+  }, [currentText, currentIndex, isDeleting, texts, displayDuration, typingSpeed, deletingSpeed, hasStarted])
 
   return (
       <span className="inline-block relative">
-        {currentText}
+        {currentText || '\u00A0'}
         <span className="absolute w-1 h-8 ml-1 top-1 sm:w-1.5 sm:h-12 sm:ml-1 sm:top-1 md:w-2 md:h-20 md:ml-2 md:top-2 bg-foreground" style={{ animation: 'fadeOut 1s ease-in-out infinite' }}></span>
       </span>
   )
@@ -117,7 +126,7 @@ export default function LandingPage() {
             <span className="text-2xl sm:text-3xl md:text-4xl text-muted-foreground">The AI notepad for drafting</span><br />
             <span className="text-4xl sm:text-6xl md:text-8xl block mt-4">
               <RotatingText 
-                texts={["emails", "slack messages", "documents", "teams messages", "proposals", "reports"]}
+                texts={["emails", "Slack messages", "memos", "Teams messages", "documents", "proposals", "reports"]}
                 displayDuration={3500}
                 typingSpeed={180}
                 deletingSpeed={75}
@@ -134,10 +143,10 @@ export default function LandingPage() {
             </Button>
           </div>
         </div>
-        <div className="hidden lg:block absolute z-[11] -bottom-[13rem] left-1/2 transform -translate-x-1/2 w-[65vw] max-w-[1600px] pointer-events-none">
+        <div className="hidden lg:block absolute z-[11] -bottom-[15rem] left-1/2 transform -translate-x-1/2 w-[65vw] max-w-[1600px] pointer-events-none">
           <Image
-            src="/Resume-placeholder.png"
-            alt="Resume Placeholder"
+            src="/Relay-dashboard.png"
+            alt="Relay Dashboard"
             width={1600}
             height={1200}
             className="w-full h-auto rounded-lg shadow-2xl"
@@ -148,45 +157,45 @@ export default function LandingPage() {
       {/* Features Section */}
       <div
         id="features"
-        className="relative mx-auto max-w-7xl pt-20 lg:pt-72 max-lg:pb-10 select-none bg-card border-2 border-border rounded-sm overflow-hidden scroll-mt-24"
+        className="relative mx-auto max-w-7xl pt-20 lg:pt-96 max-lg:pb-10 select-none bg-card border-2 border-border rounded-xl overflow-hidden scroll-mt-24"
       >
         <div className="mx-auto max-w-2xl sm:text-center px-5 lg:px-0">
-          <h2 className="text-lg/10 font-base text-muted-foreground uppercase">Intelligent job hunting</h2>
+          <h2 className="text-lg/10 font-base text-muted-foreground uppercase">Frictionless writing</h2>
           <p className="mt-2 text-4xl font-medium tracking-tight text-pretty text-foreground sm:text-5xl sm:text-balance max-w-xl mx-auto">
-            Aspire uses data to minimize chance.
+            AI you can edit
             {/* Fueled by artificial intelligence. */}
             {/* Intelligent job hunting. */}
           </p>
         </div>
-        <div className="grid lg:grid-cols-2 mt-20 mb-24 lg:mb-0 pointer-events-none gap-y-20 lg:gap-y-0">
+        <div className="grid lg:grid-cols-2 mt-32 mb-24 lg:mb-0 pointer-events-none gap-y-20 lg:gap-y-0 border border-(var(--primary)) border-3 rounded-xl">
           <div className="relative">
             <Image
-              src="/Placeholder_you.svg"
-              alt="Understands you"
+              src="/Context-resize.png"
+              alt="First draft"
               width={800}
               height={600}
-              className="w-full h-auto border border-primary border-3 rounded-xl"
+              className="w-full h-auto rounded-xl"
             />
             <div className="lg:absolute px-8 -mt-16 lg:mt-0 lg:pl-0 bottom-16 left-10 w-full lg:w-auto">
-              <h2 className="text-2xl font-medium break-words text-foreground">Understanding you</h2>
+              <h2 className="text-2xl font-medium break-words text-foreground">First draft</h2>
               <p className="w-full lg:w-112 mt-3 text-base leading-5 text-foreground break-words">
-                Aspire learns your background, experiences, skills, and achievements to understand the millions of ways you can be positioned for a role.
+                Paste context (notes, message threads, documents), give instructions, and we'll generate a first draft (like ChatGPT — nothing special).
               </p>
             </div>
             <div className="hidden lg:block absolute bg-background w-1 h-8.5 bottom-28.5 -left-[1px]"></div>
           </div>
           <div className="relative">
             <Image
-              src="/Placeholder_role.png"
-              alt="Hears what you hear"
+              src="/Revise-resized.png"
+              alt="Edit and re-prompt"
               width={800}
               height={600}
-              className="w-full h-auto"
+              className="w-full h-auto rounded-xl"
             />
             <div className="lg:absolute px-8 -mt-16 lg:mt-0 lg:pl-0 bottom-16 left-10 w-full lg:w-auto">
-              <h2 className="text-2xl font-medium break-words text-foreground">Understanding the opportunity</h2>
+              <h2 className="text-2xl font-medium break-words text-foreground">Edit and re-prompt</h2>
               <p className="w-full lg:w-112 mt-3 text-base leading-5 text-foreground break-words">
-              For each opportunity, Aspire conducts extensive research to analyze the hiring team, company priorities, and short & long-term needs to build a model of the perfect candidate.
+              Edit in-line (no copy/paste required). Select a text, what needs to change, and we'll revise accordingly.
               </p>
             </div>
             <div className="hidden lg:block absolute bg-background w-1 h-8.5 bottom-28.5 -left-[1px]"></div>
@@ -201,9 +210,9 @@ export default function LandingPage() {
             className="w-full h-auto"
           />
           <div className="lg:absolute pl-8 mt-8 lg:mt-0 lg:pl-0 bottom-16 left-10 pr-10 w-full lg:w-auto">
-            <h2 className="text-2xl font-medium break-words text-foreground">Need-Based Positioning</h2>
+            <h2 className="text-2xl font-medium break-words text-foreground">Intelligent styling</h2>
             <p className="w-full lg:w-112 mt-3 text-base leading-5 text-foreground break-words">
-              Aspire tailors your resume to focus on the experiences, skills, and metrics most valuable to each unique opportunity.
+              As you create more drafts, we'll learn your voice for different channels and apply it accordingly.
             </p>
           </div>
           <div className="hidden lg:block absolute bg-background w-1 h-8.5 bottom-34 -left-[1px]"></div>
@@ -213,28 +222,28 @@ export default function LandingPage() {
       {/* Testimonial Section */}
       <div className="mx-auto max-w-7xl sm:text-center py-36 bg-background text-center">
         <p className="text-center mt-2 text-4xl font-medium tracking-tight text-pretty text-foreground sm:text-5xl sm:text-balance">
-          "The industrial revolution for job search."
+          "Helpful."
           {/* Reality meets future. */}
           {/* Get that bag. */}
         </p>
         <Link
           href="/manifesto"
-          className="inline-flex items-center gap-x-2 rounded-lg bg-primary mt-8 text-primary-foreground px-10 py-3 text-md font-semibold shadow-xs outline-none hover:-translate-y-0.5 transition hover:scale-[100.5%] hover:bg-primary/90"
+          className="inline-flex items-center gap-x-2 rounded-lg bg-primary mt-12 text-primary-foreground px-10 py-3 text-md font-semibold shadow-xs outline-none hover:-translate-y-0.5 transition hover:scale-[100.5%] hover:bg-primary/90"
         >
           <span className="transition">Get Started</span>
         </Link>
       </div>
 
       {/* Undetectable Section */}
-      <div className="bg-secondary max-w-7xl mx-auto rounded-sm">
+      <div className="bg-secondary max-w-7xl mx-auto rounded-xl">
         <div className="mx-auto max-w-6xl sm:text-center pt-20 pb-10 lg:pt-32 px-4 lg:px-8">
           <div className="max-w-full mx-auto lg:max-w-6xl px-4">
             <h2 className="mt-2 text-4xl font-medium tracking-tight text-foreground sm:text-5xl sm:text-balance">
-              Harness AI.
+              AI you can edit
               {/* Skip the broken system. */}
             </h2>
             <p className="mt-4 text-lg sm:text-2xl max-w-xl sm:mx-auto font-base tracking-tight text-muted-foreground leading-6">
-              The old way of searching is over.
+              The power of AI in purpose built interface
               <span className="block sm:hidden" />
               {/* {' '}Bring a rocket launcher. */}
               {/* Trained to maximize your perception by AI screening algorithms and the hiring team. */}
@@ -251,9 +260,9 @@ export default function LandingPage() {
             <div className="py-16 mx-auto grid grid-cols-1 gap-x-12 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-5 items-center">
               <div className="lg:pr-8 pl-8 lg:pl-0 col-span-2">
                 <div className="text-left">
-                  <h2 className="text-2xl sm:text-3xl font-medium tracking-tight text-foreground mb-4">Screening optimized</h2>
+                  <h2 className="text-2xl sm:text-3xl font-medium tracking-tight text-foreground mb-4">In-line editing</h2>
                   <p className="text-lg sm:text-xl text-muted-foreground">
-                    Aspire has a deep understanding of resume-screening algorithms and it trained to beat them at their own game.
+                    Edit responses directly, or select text to modify and describe the change.
                   </p>
                 </div>
               </div>
@@ -270,9 +279,9 @@ export default function LandingPage() {
             <div className="py-16 mx-auto grid grid-cols-1 gap-x-12 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-5 items-center">
               <div className="lg:ml-auto pl-8 lg:order-2 col-span-2">
                 <div className="text-left">
-                  <h2 className="text-2xl sm:text-3xl font-medium tracking-tight text-foreground mb-4">Needs {'>'} Skills</h2>
+                  <h2 className="text-2xl sm:text-3xl font-medium tracking-tight text-foreground mb-4">Seamless forwarding</h2>
                   <p className="text-lg sm:text-xl text-muted-foreground">
-                    Aspire researches the role and company to understand what the perfect candidate looks like — then molds your resume to fit.
+                    Just paste an existing message, select the new message type, and get a forward style draft.
                   </p>
                 </div>
               </div>
@@ -289,9 +298,9 @@ export default function LandingPage() {
             <div className="py-16 mx-auto grid grid-cols-1 gap-x-12 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-5 items-center">
               <div className="lg:pr-8 pl-8 lg:pl-0 col-span-2">
                 <div className="text-left">
-                  <h2 className="text-2xl sm:text-3xl font-medium tracking-tight text-foreground mb-4">Instant tailoring</h2>
+                  <h2 className="text-2xl sm:text-3xl font-medium tracking-tight text-foreground mb-4">Style learning</h2>
                   <p className="text-lg sm:text-xl text-muted-foreground">
-                    Aspire tailors your resume in seconds so polished applications are quick and painless.
+                    As you create more drafts, we'll learn your voice for different channels and apply it accordingly.
                   </p>
                 </div>
               </div>
@@ -359,7 +368,7 @@ export default function LandingPage() {
                 <div className="p-8 lg:pl-20">
                   <h2 className="text-4xl font-medium mb-4 text-foreground">Email</h2>
                   <p className="text-xl text-foreground max-w-94">
-                  For each opportunity, Aspire uses company and role research to develop a tailored resume with the most relevant skills, experience, and keywords.
+                  Describe the email to be drafted, or paste an existing email thread and Relay will draft a response.
                   </p>
                 </div>
                 <div className="md:hidden flex justify-center items-center mt-4">
@@ -421,7 +430,7 @@ export default function LandingPage() {
           <Logo className="w-24 h-24 text-primary mb-6" />
           <span className="uppercase text-foreground tracking-tight text-lg">Welcome to</span>
           <h1 className="mt-2 text-5xl font-medium tracking-tight text-balance text-foreground sm:text-6xl">
-            Intelligent drafting.
+            Frictionless writing.
           </h1>
           <div className="grid items-center gap-y-2.5 mt-10 justify-center text-center">
             <Button className="flex group items-center gap-x-2 rounded-lg bg-primary text-primary-foreground px-10 py-3 text-md font-semibold shadow-xs outline-none hover:-translate-y-0.5 transition hover:scale-[100.5%] hover:bg-primary/90">

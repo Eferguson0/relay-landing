@@ -222,7 +222,7 @@ export default function LandingPage() {
       {/* Testimonial Section */}
       <div className="mx-auto max-w-7xl sm:text-center py-36 bg-background text-center">
         <p className="text-center mt-2 text-4xl font-medium tracking-tight text-pretty text-foreground sm:text-5xl sm:text-balance">
-          "If ChatGPT was designed specifically for writing."
+          "Makes writing with ChatGPT 10x easier."
           {/* Reality meets future. */}
           {/* Get that bag. */}
         </p>

@@ -37,7 +37,7 @@ export default function PricingPage() {
     },
     pro: {
       name: "Pro",
-      price: "$7",
+      price: "$5",
       period: "/mo",
       description: "Unlimited messages, documents, and drafts",
       features: [

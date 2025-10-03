@@ -84,11 +84,12 @@ export default function NavBar() {
         </header>
       </div>
       {isMobileMenuOpen && (
-        <nav
-          id="mobile-menu"
-          className="fixed left-0 top-0 z-[100] h-screen w-full flex flex-col justify-between bg-background text-foreground px-6 pt-[96px] pb-[calc(2rem+env(safe-area-inset-bottom))] min-h-screen after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[20vh] after:bg-background after:-z-10"
-          aria-hidden="false"
-        >
+        <div className="fixed left-0 top-0 z-[100] h-[120vh] w-full bg-background">
+          <nav
+            id="mobile-menu"
+            className="h-screen w-full flex flex-col justify-between text-foreground px-6 pt-[96px] pb-[calc(2rem+env(safe-area-inset-bottom))] min-h-screen"
+            aria-hidden="false"
+          >
           <ul className="flex flex-col gap-4 text-5xl font-regular">
             <li>
               <Link href="/#features" className="hover:underline" onClick={() => setIsMobileMenuOpen(false)}>
@@ -110,7 +111,8 @@ export default function NavBar() {
             <Link href="/login" className="w-full text-center py-2.5 bg-background text-foreground rounded-lg font-medium border border-foreground border-20" onClick={() => setIsMobileMenuOpen(false)}>Log in</Link>
             <Link href="/signup" className="w-full text-center py-2.5 bg-primary text-primary-foreground rounded-lg font-semibold" onClick={() => setIsMobileMenuOpen(false)}>Sign up</Link>
           </div>
-        </nav>
+          </nav>
+        </div>
       )}
     </>
   )

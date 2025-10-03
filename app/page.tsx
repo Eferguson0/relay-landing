@@ -65,7 +65,7 @@ const RotatingText = ({
   return (
       <span className="inline-block relative">
         {currentText || '\u00A0'}
-        <span className="absolute w-1 h-8 ml-1 top-1 sm:w-1.5 sm:h-12 sm:ml-1 sm:top-1 md:w-2 md:h-20 md:ml-2 md:top-2 bg-foreground" style={{ animation: 'fadeOut 1s ease-in-out infinite' }}></span>
+        <span className="absolute w-1 h-8 ml-1 top-1 sm:w-1.5 sm:h-12 sm:ml-1 sm:top-1 md:w-2 md:h-20 md:ml-2 md:top-2 bg-foreground rounded-sm" style={{ animation: 'fadeOut 1s ease-in-out infinite' }}></span>
       </span>
   )
 }
@@ -123,10 +123,10 @@ export default function LandingPage() {
         </div>
         <div className="relative text-center z-[1] mx-auto max-w-5xl lg:pb-32">
           <h1 className="text-4xl font-medium tracking-tight text-balance text-foreground sm:text-6xl md:text-7xl">
-            <span className="text-2xl sm:text-3xl md:text-4xl text-muted-foreground">The AI notepad for drafting</span><br />
+            <span className="text-2xl sm:text-3xl md:text-4xl text-muted-foreground">The AI notepad for writing</span><br />
             <span className="text-4xl sm:text-6xl md:text-8xl block mt-4">
               <RotatingText 
-                texts={["emails", "Slack messages", "memos", "Teams messages", "documents", "proposals", "reports"]}
+                texts={["emails", "Slack messages", "pre-reads", "Teams messages", "summaries", "memos", "documents", "proposals", "reports"]}
                 displayDuration={3500}
                 typingSpeed={180}
                 deletingSpeed={75}
@@ -160,9 +160,9 @@ export default function LandingPage() {
         className="relative mx-auto max-w-7xl pt-20 lg:pt-96 max-lg:pb-10 select-none bg-card border-2 border-border rounded-xl overflow-hidden scroll-mt-24"
       >
         <div className="mx-auto max-w-2xl sm:text-center px-5 lg:px-0">
-          <h2 className="text-lg/10 font-base text-muted-foreground uppercase">Frictionless writing</h2>
+          <h2 className="text-lg/10 font-base text-muted-foreground uppercase">Write with AI</h2>
           <p className="mt-2 text-4xl font-medium tracking-tight text-pretty text-foreground sm:text-5xl sm:text-balance max-w-xl mx-auto">
-            AI you can edit
+            End the copy/paste loop
             {/* Fueled by artificial intelligence. */}
             {/* Intelligent job hunting. */}
           </p>
@@ -179,7 +179,7 @@ export default function LandingPage() {
             <div className="lg:absolute px-8 -mt-16 lg:mt-0 lg:pl-0 bottom-16 left-10 w-full lg:w-auto">
               <h2 className="text-2xl font-medium break-words text-foreground">First draft</h2>
               <p className="w-full lg:w-112 mt-3 text-base leading-5 text-foreground break-words">
-                Paste context (notes, message threads, documents), give instructions, and we'll generate a first draft (like ChatGPT — nothing special).
+                Share context (notes, message threads, documents), give instructions, and we'll generate a first draft (like ChatGPT — nothing special).
               </p>
             </div>
             <div className="hidden lg:block absolute bg-background w-1 h-8.5 bottom-28.5 -left-[1px]"></div>
@@ -222,7 +222,7 @@ export default function LandingPage() {
       {/* Testimonial Section */}
       <div className="mx-auto max-w-7xl sm:text-center py-36 bg-background text-center">
         <p className="text-center mt-2 text-4xl font-medium tracking-tight text-pretty text-foreground sm:text-5xl sm:text-balance">
-          "Helpful."
+          "If ChatGPT was designed specifically for writing."
           {/* Reality meets future. */}
           {/* Get that bag. */}
         </p>
@@ -243,7 +243,7 @@ export default function LandingPage() {
               {/* Skip the broken system. */}
             </h2>
             <p className="mt-4 text-lg sm:text-2xl max-w-xl sm:mx-auto font-base tracking-tight text-muted-foreground leading-6">
-              The power of AI in purpose built interface
+              The power of AI in a purpose built interface
               <span className="block sm:hidden" />
               {/* {' '}Bring a rocket launcher. */}
               {/* Trained to maximize your perception by AI screening algorithms and the hiring team. */}
@@ -300,7 +300,7 @@ export default function LandingPage() {
                 <div className="text-left">
                   <h2 className="text-2xl sm:text-3xl font-medium tracking-tight text-foreground mb-4">Style learning</h2>
                   <p className="text-lg sm:text-xl text-muted-foreground">
-                    As you create more drafts, we'll learn your voice for different channels and apply it accordingly.
+                    As you create more drafts, Relay learns your voice for each channel and applies it accordingly.
                   </p>
                 </div>
               </div>
@@ -324,7 +324,7 @@ export default function LandingPage() {
         className="mx-auto max-w-7xl pt-32 select-none pointer-events-none bg-background"
       >
         <h1 className="text-5xl font-medium max-w-xl m-8 text-foreground">
-          Where Relay streamlines communication
+          Where Relay speeds up writing
         </h1>
         <div className="flex flex-col-reverse md:flex-row">
           <div className="w-full md:w-3/5 md:sticky md:top-0 md:h-screen flex items-center justify-center">
@@ -385,9 +385,9 @@ export default function LandingPage() {
             <div ref={sectionRefs[1]} className="md:min-h-screen min-h-[45rem] flex items-center overflow-hidden">
               <div className="max-w-xl">
                 <div className="p-8 lg:pl-20">
-                  <h2 className="text-4xl font-medium mb-4 text-foreground">Internal Message & Memos</h2>
+                  <h2 className="text-4xl font-medium mb-4 text-foreground">Internal Messages & Memos</h2>
                   <p className="text-xl text-foreground max-w-94">
-                  As we research the opportunity and tailor your resume, you'll receive insights that can be used later on for outreach and interview prep.
+                  Quickly draft & refine long-form internal messages (Slack, Teams, text, email, etc.)
                   </p>
                 </div>
                 <div className="md:hidden flex justify-center items-center mt-4">
@@ -406,7 +406,7 @@ export default function LandingPage() {
                 <div className="p-8 lg:pl-20">
                   <h2 className="text-4xl font-medium mb-4 text-foreground">Documents</h2>
                   <p className="text-xl text-foreground max-w-94">
-                  Aspire gains a deep understanding of your professional background to help strengthen your core resume — which serve as the foundation for tailored resumes.
+                  Easily draft & refine documents (pre-reads, summaries, reports, proposals, etc.)
                   </p>
                 </div>
                 <div className="md:hidden flex justify-center items-center mt-4">
@@ -430,7 +430,7 @@ export default function LandingPage() {
           <Logo className="w-24 h-24 text-primary mb-6" />
           <span className="uppercase text-foreground tracking-tight text-lg">Welcome to</span>
           <h1 className="mt-2 text-5xl font-medium tracking-tight text-balance text-foreground sm:text-6xl">
-            Frictionless writing.
+            Intelligent writing
           </h1>
           <div className="grid items-center gap-y-2.5 mt-10 justify-center text-center">
             <Button className="flex group items-center gap-x-2 rounded-lg bg-primary text-primary-foreground px-10 py-3 text-md font-semibold shadow-xs outline-none hover:-translate-y-0.5 transition hover:scale-[100.5%] hover:bg-primary/90">

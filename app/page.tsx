@@ -65,7 +65,7 @@ const RotatingText = ({
   return (
       <span className="inline-block relative">
         {currentText || '\u00A0'}
-        <span className="absolute w-1 h-8 ml-1 top-1 sm:w-1.5 sm:h-12 sm:ml-1 sm:top-1 md:w-2 md:h-20 md:ml-2 md:top-2 bg-foreground rounded-sm" style={{ animation: 'fadeOut 1s ease-in-out infinite' }}></span>
+        <span className="absolute w-1 h-8 ml-1 top-1 sm:w-1.5 sm:h-12 sm:ml-1 sm:top-1 md:w-2 md:h-20 md:ml-2 md:top-2 bg-foreground" style={{ animation: 'fadeOut 1s ease-in-out infinite' }}></span>
       </span>
   )
 }
@@ -134,8 +134,9 @@ export default function LandingPage() {
               />
             </span>
           </h1>
-          <p className="mx-auto max-w-lg md:max-w-2xl mt-8 text-md sm:text-lg md:text-2xl font-normal text-balance text-muted-foreground">
-            Relay makes drafting easy through an AI-powered text editor.
+          <p className="mx-auto max-w-lg md:max-w-2xl mt-8 text-md sm:text-lg md:text-xl font-normal text-balance text-muted-foreground">
+            Relay streamlines drafting by allowing you to generate and edit content from your favorite AI chatbots — all in one place.
+            {/* Relay makes drafting easy by through an AI-powered text editor. */}
           </p>
           <div className="grid items-center justify-center gap-y-2.5 mt-10">
             <Button className="flex group items-center gap-x-2 rounded-lg bg-primary text-primary-foreground px-10 py-3 text-md font-medium shadow-xs outline-none hover:-translate-y-0.5 transition hover:scale-[100.5%] hover:bg-primary/90">
@@ -160,9 +161,9 @@ export default function LandingPage() {
         className="relative mx-auto max-w-7xl pt-20 lg:pt-96 max-lg:pb-10 select-none bg-card border-2 border-border rounded-xl overflow-hidden scroll-mt-24"
       >
         <div className="mx-auto max-w-2xl sm:text-center px-5 lg:px-0">
-          <h2 className="text-lg/10 font-base text-muted-foreground uppercase">Write with AI</h2>
+          <h2 className="text-lg/10 font-base text-muted-foreground uppercase">Native editing</h2>
           <p className="mt-2 text-4xl font-medium tracking-tight text-pretty text-foreground sm:text-5xl sm:text-balance max-w-xl mx-auto">
-            End the copy/paste loop
+            Easily refine AI drafts
             {/* Fueled by artificial intelligence. */}
             {/* Intelligent job hunting. */}
           </p>
@@ -279,9 +280,9 @@ export default function LandingPage() {
             <div className="py-16 mx-auto grid grid-cols-1 gap-x-12 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-5 items-center">
               <div className="lg:ml-auto pl-8 lg:order-2 col-span-2">
                 <div className="text-left">
-                  <h2 className="text-2xl sm:text-3xl font-medium tracking-tight text-foreground mb-4">Seamless forwarding</h2>
+                  <h2 className="text-2xl sm:text-3xl font-medium tracking-tight text-foreground mb-4">Style learning</h2>
                   <p className="text-lg sm:text-xl text-muted-foreground">
-                    Just paste an existing message, select the new message type, and get a forward style draft.
+                  As you create more drafts, Relay learns your voice for each channel and applies it accordingly.
                   </p>
                 </div>
               </div>
@@ -298,9 +299,9 @@ export default function LandingPage() {
             <div className="py-16 mx-auto grid grid-cols-1 gap-x-12 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-5 items-center">
               <div className="lg:pr-8 pl-8 lg:pl-0 col-span-2">
                 <div className="text-left">
-                  <h2 className="text-2xl sm:text-3xl font-medium tracking-tight text-foreground mb-4">Style learning</h2>
+                  <h2 className="text-2xl sm:text-3xl font-medium tracking-tight text-foreground mb-4">Seamless forwarding</h2>
                   <p className="text-lg sm:text-xl text-muted-foreground">
-                    As you create more drafts, Relay learns your voice for each channel and applies it accordingly.
+                  Just paste an existing message, select the new message type, and get a forward style draft.
                   </p>
                 </div>
               </div>
@@ -387,7 +388,7 @@ export default function LandingPage() {
                 <div className="p-8 lg:pl-20">
                   <h2 className="text-4xl font-medium mb-4 text-foreground">Internal Messages & Memos</h2>
                   <p className="text-xl text-foreground max-w-94">
-                  Quickly draft & refine long-form internal messages (Slack, Teams, text, email, etc.)
+                  Quickly draft & refine longer internal messages (Slack, Teams, text, email, etc.)
                   </p>
                 </div>
                 <div className="md:hidden flex justify-center items-center mt-4">
@@ -406,7 +407,7 @@ export default function LandingPage() {
                 <div className="p-8 lg:pl-20">
                   <h2 className="text-4xl font-medium mb-4 text-foreground">Documents</h2>
                   <p className="text-xl text-foreground max-w-94">
-                  Easily draft & refine documents (pre-reads, summaries, reports, proposals, etc.)
+                  The LLM drafts & you edit — all in one place.
                   </p>
                 </div>
                 <div className="md:hidden flex justify-center items-center mt-4">
@@ -428,9 +429,9 @@ export default function LandingPage() {
       <div className="relative mx-auto max-w-7xl py-60 mt-10 lg:mt-0 select-none bg-card rounded-sm border border-border">
         <div className="relative flex flex-col items-center lg:text-center z-[1]">
           <Logo className="w-24 h-24 text-primary mb-6" />
-          <span className="uppercase text-foreground tracking-tight text-lg">Welcome to</span>
+          <span className="uppercase text-foreground tracking-tight text-lg">Relay</span>
           <h1 className="mt-2 text-5xl font-medium tracking-tight text-balance text-foreground sm:text-6xl">
-            Intelligent writing
+            The AI notepad.
           </h1>
           <div className="grid items-center gap-y-2.5 mt-10 justify-center text-center">
             <Button className="flex group items-center gap-x-2 rounded-lg bg-primary text-primary-foreground px-10 py-3 text-md font-semibold shadow-xs outline-none hover:-translate-y-0.5 transition hover:scale-[100.5%] hover:bg-primary/90">

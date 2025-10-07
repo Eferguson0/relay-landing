@@ -139,9 +139,11 @@ export default function LandingPage() {
             {/* Relay makes drafting easy by through an AI-powered text editor. */}
           </p>
           <div className="grid items-center justify-center gap-y-2.5 mt-10">
-            <Button className="flex group items-center gap-x-2 rounded-lg bg-primary text-primary-foreground px-10 py-3 text-md font-medium shadow-xs outline-none hover:-translate-y-0.5 transition hover:scale-[100.5%] hover:bg-primary/90">
-              <span className="transition">Get Started</span>
-            </Button>
+            <Link href="https://relay-web-57ps.onrender.com/login">
+              <Button className="flex group items-center gap-x-2 rounded-lg bg-primary text-primary-foreground px-10 py-3 text-md font-medium shadow-xs outline-none hover:-translate-y-0.5 transition hover:scale-[100.5%] hover:bg-primary/90">
+                <span className="transition">Get Started</span>
+              </Button>
+            </Link>
           </div>
         </div>
         <div className="hidden lg:block absolute z-[11] -bottom-[15rem] left-1/2 transform -translate-x-1/2 w-[65vw] max-w-[1600px] pointer-events-none">
@@ -228,7 +230,7 @@ export default function LandingPage() {
           {/* Get that bag. */}
         </p>
         <Link
-          href="/manifesto"
+          href="https://relay-web-57ps.onrender.com/login"
           className="inline-flex items-center gap-x-2 rounded-lg bg-primary mt-12 text-primary-foreground px-10 py-3 text-md font-semibold shadow-xs outline-none hover:-translate-y-0.5 transition hover:scale-[100.5%] hover:bg-primary/90"
         >
           <span className="transition">Get Started</span>
@@ -434,9 +436,11 @@ export default function LandingPage() {
             The AI notepad.
           </h1>
           <div className="grid items-center gap-y-2.5 mt-10 justify-center text-center">
-            <Button className="flex group items-center gap-x-2 rounded-lg bg-primary text-primary-foreground px-10 py-3 text-md font-semibold shadow-xs outline-none hover:-translate-y-0.5 transition hover:scale-[100.5%] hover:bg-primary/90">
-              <span className="transition">Get Started</span>
-            </Button>
+            <Link href="https://relay-web-57ps.onrender.com/login">
+              <Button className="flex group items-center gap-x-2 rounded-lg bg-primary text-primary-foreground px-10 py-3 text-md font-semibold shadow-xs outline-none hover:-translate-y-0.5 transition hover:scale-[100.5%] hover:bg-primary/90">
+                <span className="transition">Get Started</span>
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

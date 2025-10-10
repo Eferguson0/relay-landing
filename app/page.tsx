@@ -73,11 +73,28 @@ const RotatingText = ({
 export default function LandingPage() {
   const [activeSection, setActiveSection] = useState(0)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [heroImageLoaded, setHeroImageLoaded] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(false)
   const sectionRefs = [
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null)
   ]
+
+  // Check if desktop on mount
+  useEffect(() => {
+    const checkDesktop = () => {
+      const desktop = window.innerWidth >= 1024 // lg breakpoint
+      setIsDesktop(desktop)
+      if (!desktop) {
+        // On mobile, set loaded immediately since hero is hidden
+        setHeroImageLoaded(true)
+      }
+    }
+    checkDesktop()
+    window.addEventListener('resize', checkDesktop)
+    return () => window.removeEventListener('resize', checkDesktop)
+  }, [])
 
   useEffect(() => {
     const observers = sectionRefs.map((ref, idx) => {
@@ -105,7 +122,7 @@ export default function LandingPage() {
   }, [isMobileMenuOpen]);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background" style={{ visibility: heroImageLoaded ? 'visible' : 'hidden' }}>
       <NavBar />
       {/* Hero Section */}
       <div className="min-h-[550px] relative py-32 sm:py-48 lg:py-60 select-none bg-background">
@@ -146,15 +163,19 @@ export default function LandingPage() {
             </Link>
           </div>
         </div>
-        <div className="hidden lg:block absolute z-[11] -bottom-[20rem] left-1/2 transform -translate-x-1/2 w-[65vw] max-w-[1600px] pointer-events-none">
-          <Image
-            src="/Relay-dashboard.png"
-            alt="Relay Dashboard"
-            width={1600}
-            height={1200}
-            className="w-full h-auto rounded-lg shadow-2xl"
-          />
-        </div>
+        {isDesktop && (
+          <div className="absolute z-[11] -bottom-[20rem] left-1/2 transform -translate-x-1/2 w-[65vw] max-w-[1600px] pointer-events-none">
+            <Image
+              src="/Relay-dashboard.webp"
+              alt="Relay Dashboard"
+              width={1600}
+              height={1200}
+              className="w-full h-auto rounded-lg shadow-2xl"
+              priority
+              onLoad={() => setHeroImageLoaded(true)}
+            />
+          </div>
+        )}
       </div>
 
       {/* Features Section */}
@@ -174,7 +195,7 @@ export default function LandingPage() {
         <div className="lg:hidden mt-32 mb-24 pointer-events-none space-y-8">
           <div>
             <Image
-              src="/first_draft.png"
+              src="/first_draft.webp"
               alt="First draft"
               width={1200}
               height={900}
@@ -189,7 +210,7 @@ export default function LandingPage() {
           </div>
           <div>
             <Image
-              src="/edit_reprompt.png"
+              src="/edit_reprompt.webp"
               alt="Edit and re-prompt"
               width={1200}
               height={600}
@@ -208,7 +229,7 @@ export default function LandingPage() {
         <div className="hidden lg:grid lg:grid-cols-2 mt-32 mb-24 lg:mb-0 pointer-events-none gap-y-20 lg:gap-x-8 lg:gap-y-4 rounded-x">
           <div className="contents">
             <Image
-              src="/first_draft.png"
+              src="/first_draft.webp"
               alt="First draft"
               width={1200}
               height={900}
@@ -217,7 +238,7 @@ export default function LandingPage() {
           </div>
           <div className="contents">
             <Image
-              src="/edit_reprompt.png"
+              src="/edit_reprompt.webp"
               alt="Edit and re-prompt"
               width={1200}
               height={600}
@@ -243,7 +264,7 @@ export default function LandingPage() {
         </div>
         <div className="relative z-[1] overflow-hidden pointer-events-none">
           <Image
-            src="/intelligent_styling.png"
+            src="/intelligent_styling.webp"
             alt="Intelligent styling"
             width={1600}
             height={600}
@@ -309,7 +330,7 @@ export default function LandingPage() {
               <div className="lg:order-2 col-span-3 p-8 lg:p-0 -mt-14 lg:mt-0">
                 <Image
                   alt="In-line editing"
-                  src="/inline_edit.png"
+                  src="/inline_edit.webp"
                   width={600}
                   height={400}
                   className="bg-gray-100 rounded-[18px] w-full max-w-none ring-1 ring-gray-300"
@@ -328,7 +349,7 @@ export default function LandingPage() {
               <div className="lg:order-1 col-span-3 p-8 lg:p-0 -mt-14 lg:mt-0">
                 <Image
                   alt="Style learning"
-                  src="/style_learning.png"
+                  src="/style_learning.webp"
                   width={600}
                   height={400}
                   className="bg-gray-100 rounded-[18px] w-full max-w-none ring-1 ring-gray-300"
@@ -347,7 +368,7 @@ export default function LandingPage() {
               <div className="lg:order-2 col-span-3 p-8 lg:p-0 -mt-14 lg:mt-0">
                 <Image
                   alt="Seamless forwarding"
-                  src="/forwarding.png"
+                  src="/forwarding.webp"
                   width={600}
                   height={400}
                   className="bg-gray-100 rounded-[18px] w-full max-w-none ring-1 ring-gray-300"
@@ -373,7 +394,7 @@ export default function LandingPage() {
               <div className="hidden md:flex relative w-full h-full">
                 <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-700 ease-in-out ${activeSection === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}>
                   <Image
-                    src="/email_preview.png"
+                    src="/email_preview.webp"
                     alt="Email"
                     width={800}
                     height={600}
@@ -382,7 +403,7 @@ export default function LandingPage() {
                 </div>
                 <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-700 ease-in-out ${activeSection === 1 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}>
                   <Image
-                    src="/internal_preview.png"
+                    src="/internal_preview.webp"
                     alt="Internal Messages & Memos"
                     width={800}
                     height={600}
@@ -391,7 +412,7 @@ export default function LandingPage() {
                 </div>
                 <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-700 ease-in-out ${activeSection === 2 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}>
                   <Image
-                    src="/doc_preview.png"
+                    src="/doc_preview.webp"
                     alt="Documents"
                     width={800}
                     height={600}
@@ -413,7 +434,7 @@ export default function LandingPage() {
                 </div>
                 <div className="md:hidden flex justify-center items-center mt-4">
                   <Image
-                    src="/email_preview.png"
+                    src="/email_preview.webp"
                     alt="Email"
                     width={800}
                     height={600}
@@ -432,7 +453,7 @@ export default function LandingPage() {
                 </div>
                 <div className="md:hidden flex justify-center items-center mt-4">
                   <Image
-                    src="/internal_preview.png"
+                    src="/internal_preview.webp"
                     alt="Internal Messages & Memos"
                     width={800}
                     height={600}
@@ -451,7 +472,7 @@ export default function LandingPage() {
                 </div>
                 <div className="md:hidden flex justify-center items-center mt-4">
                   <Image
-                    src="/doc_preview.png"
+                    src="/doc_preview.webp"
                     alt="Documents"
                     width={800}
                     height={600}

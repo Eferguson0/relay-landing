@@ -146,7 +146,7 @@ export default function LandingPage() {
             </Link>
           </div>
         </div>
-        <div className="hidden lg:block absolute z-[11] -bottom-[15rem] left-1/2 transform -translate-x-1/2 w-[65vw] max-w-[1600px] pointer-events-none">
+        <div className="hidden lg:block absolute z-[11] -bottom-[20rem] left-1/2 transform -translate-x-1/2 w-[65vw] max-w-[1600px] pointer-events-none">
           <Image
             src="/Relay-dashboard.png"
             alt="Relay Dashboard"
@@ -170,44 +170,46 @@ export default function LandingPage() {
             {/* Intelligent job hunting. */}
           </p>
         </div>
-        <div className="grid lg:grid-cols-2 mt-32 mb-24 lg:mb-0 pointer-events-none gap-y-20 lg:gap-y-0 border border-(var(--primary)) border-3 rounded-xl">
-          <div className="relative">
+        <div className="grid lg:grid-cols-2 mt-32 mb-24 lg:mb-0 pointer-events-none gap-y-20 lg:gap-x-8 lg:gap-y-4 rounded-x">
+          <div className="contents">
             <Image
-              src="/Context-resize.png"
+              src="/first_draft.png"
               alt="First draft"
-              width={800}
+              width={1200}
+              height={900}
+              className="w-full h-auto rounded-xl"
+            />
+          </div>
+          <div className="contents">
+            <Image
+              src="/edit_reprompt.png"
+              alt="Edit and re-prompt"
+              width={1200}
               height={600}
               className="w-full h-auto rounded-xl"
             />
-            <div className="lg:absolute px-8 -mt-16 lg:mt-0 lg:pl-0 bottom-16 left-10 w-full lg:w-auto">
+          </div>
+          <div className="contents">
+            <div className="px-8 -mt-16 lg:mt-0 lg:px-12 w-full lg:w-auto rounded-xl">
               <h2 className="text-2xl font-medium break-words text-foreground">First draft</h2>
               <p className="w-full lg:w-112 mt-3 text-base leading-5 text-foreground break-words">
-                Share context (notes, message threads, documents), give instructions, and we'll generate a first draft (like ChatGPT — nothing special).
+                Share context (notes, message threads, documents), give instructions, and we'll generate a first draft (like ChatGPT — nothing special).
               </p>
             </div>
-            <div className="hidden lg:block absolute bg-background w-1 h-8.5 bottom-28.5 -left-[1px]"></div>
           </div>
-          <div className="relative">
-            <Image
-              src="/Revise-resized.png"
-              alt="Edit and re-prompt"
-              width={800}
-              height={600}
-              className="w-full h-auto rounded-xl"
-            />
-            <div className="lg:absolute px-8 -mt-16 lg:mt-0 lg:pl-0 bottom-16 left-10 w-full lg:w-auto">
+          <div className="contents">
+            <div className="px-8 -mt-16 lg:mt-0 lg:px-12 w-full lg:w-auto rounded-xl">
               <h2 className="text-2xl font-medium break-words text-foreground">Edit and re-prompt</h2>
               <p className="w-full lg:w-112 mt-3 text-base leading-5 text-foreground break-words">
               Edit in-line (no copy/paste required). Select a text, what needs to change, and we'll revise accordingly.
               </p>
             </div>
-            <div className="hidden lg:block absolute bg-background w-1 h-8.5 bottom-28.5 -left-[1px]"></div>
           </div>
         </div>
         <div className="relative z-[1] overflow-hidden pointer-events-none">
           <Image
-            src="/Placeholder_baby.png"
-            alt="Answers anything"
+            src="/intelligent_styling.png"
+            alt="Intelligent styling"
             width={1600}
             height={600}
             className="w-full h-auto"
@@ -215,7 +217,7 @@ export default function LandingPage() {
           <div className="lg:absolute pl-8 mt-8 lg:mt-0 lg:pl-0 bottom-16 left-10 pr-10 w-full lg:w-auto">
             <h2 className="text-2xl font-medium break-words text-foreground">Intelligent styling</h2>
             <p className="w-full lg:w-112 mt-3 text-base leading-5 text-foreground break-words">
-              As you create more drafts, we'll learn your voice for different channels and apply it accordingly.
+              As you create drafts for different channels, we'll learn your voice and apply it accordingly. Professsional, but human.
             </p>
           </div>
           <div className="hidden lg:block absolute bg-background w-1 h-8.5 bottom-34 -left-[1px]"></div>
@@ -271,8 +273,8 @@ export default function LandingPage() {
               </div>
               <div className="lg:order-2 col-span-3 p-8 lg:p-0 -mt-14 lg:mt-0">
                 <Image
-                  alt="Doesn't join meetings-screenshot"
-                  src="/placeholder.svg?height=400&width=600"
+                  alt="In-line editing"
+                  src="/inline_edit.png"
                   width={600}
                   height={400}
                   className="bg-gray-100 rounded-[18px] w-full max-w-none ring-1 ring-gray-300"
@@ -290,8 +292,8 @@ export default function LandingPage() {
               </div>
               <div className="lg:order-1 col-span-3 p-8 lg:p-0 -mt-14 lg:mt-0">
                 <Image
-                  alt="Invisible to screen-share-screenshot"
-                  src="/placeholder.svg?height=400&width=600"
+                  alt="Style learning"
+                  src="/style_learning.png"
                   width={600}
                   height={400}
                   className="bg-gray-100 rounded-[18px] w-full max-w-none ring-1 ring-gray-300"
@@ -309,8 +311,8 @@ export default function LandingPage() {
               </div>
               <div className="lg:order-2 col-span-3 p-8 lg:p-0 -mt-14 lg:mt-0">
                 <Image
-                  alt="Follow your eyes-screenshot"
-                  src="/placeholder.svg?height=400&width=600"
+                  alt="Seamless forwarding"
+                  src="/forwarding.png"
                   width={600}
                   height={400}
                   className="bg-gray-100 rounded-[18px] w-full max-w-none ring-1 ring-gray-300"
@@ -327,7 +329,7 @@ export default function LandingPage() {
         className="mx-auto max-w-7xl pt-32 select-none pointer-events-none bg-background"
       >
         <h1 className="text-5xl font-medium max-w-xl m-8 text-foreground">
-          Where Relay speeds up writing
+          Where Relay accelerates communication
         </h1>
         <div className="flex flex-col-reverse md:flex-row">
           <div className="w-full md:w-3/5 md:sticky md:top-0 md:h-screen flex items-center justify-center">
@@ -336,8 +338,8 @@ export default function LandingPage() {
               <div className="hidden md:flex relative w-full h-full">
                 <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-700 ease-in-out ${activeSection === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}>
                   <Image
-                    src="/placeholderusecase1.png"
-                    alt="Core Resume"
+                    src="/email_preview.png"
+                    alt="Email"
                     width={800}
                     height={600}
                     className="max-w-full max-h-full object-contain rounded-[18px]"
@@ -345,8 +347,8 @@ export default function LandingPage() {
                 </div>
                 <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-700 ease-in-out ${activeSection === 1 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}>
                   <Image
-                    src="/placeholderusecase2.png"
-                    alt="Tailored Resumes"
+                    src="/internal_preview.png"
+                    alt="Internal Messages & Memos"
                     width={800}
                     height={600}
                     className="max-w-full max-h-full object-contain rounded-[18px]"
@@ -354,8 +356,8 @@ export default function LandingPage() {
                 </div>
                 <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-700 ease-in-out ${activeSection === 2 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}>
                   <Image
-                    src="/placeholderusecase3.png"
-                    alt="Opportunity Insights"
+                    src="/doc_preview.png"
+                    alt="Documents"
                     width={800}
                     height={600}
                     className="max-w-full max-h-full object-contain rounded-[18px]"
@@ -376,8 +378,8 @@ export default function LandingPage() {
                 </div>
                 <div className="md:hidden flex justify-center items-center mt-4">
                   <Image
-                    src="/placeholderusecase1.png"
-                    alt="Core Resume"
+                    src="/email_preview.png"
+                    alt="Email"
                     width={800}
                     height={600}
                     className="max-w-full max-h-full object-contain rounded-[18px]"
@@ -395,8 +397,8 @@ export default function LandingPage() {
                 </div>
                 <div className="md:hidden flex justify-center items-center mt-4">
                   <Image
-                    src="/placeholderusecase2.png"
-                    alt="Tailored Resumes"
+                    src="/internal_preview.png"
+                    alt="Internal Messages & Memos"
                     width={800}
                     height={600}
                     className="max-w-full max-h-full object-contain rounded-[18px]"
@@ -414,8 +416,8 @@ export default function LandingPage() {
                 </div>
                 <div className="md:hidden flex justify-center items-center mt-4">
                   <Image
-                    src="/placeholderusecase3.png"
-                    alt="Opportunity Insights"
+                    src="/doc_preview.png"
+                    alt="Documents"
                     width={800}
                     height={600}
                     className="max-w-full max-h-full object-contain rounded-[18px]"

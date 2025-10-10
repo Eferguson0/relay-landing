@@ -48,15 +48,15 @@ export default function NavBar() {
             <div className="hidden lg:flex lg:gap-x-12">
               <Link
                 className="text-md/6 font-regular text-foreground transition border-b border-transparent hover:border-foreground"
-                href="/#features"
+                href="/#how-it-works"
               >
                 How it works
               </Link>
               <Link
                 className="text-md/6 font-regular text-foreground transition border-b border-transparent hover:border-foreground"
-                href="/#usage"
+                href="/#use-cases"
               >
-                Features
+                Use cases
               </Link>
               <Link
                 className="text-md/6 font-regular text-foreground transition border-b border-transparent hover:border-foreground"
@@ -92,13 +92,13 @@ export default function NavBar() {
           >
           <ul className="flex flex-col gap-4 text-5xl font-regular">
             <li>
-              <Link href="/#features" className="hover:underline" onClick={() => setIsMobileMenuOpen(false)}>
+              <Link href="/#how-it-works" className="hover:underline" onClick={() => setIsMobileMenuOpen(false)}>
                 How it works
               </Link>
             </li>
             <li>
-              <Link href="/#usage" className="hover:underline" onClick={() => setIsMobileMenuOpen(false)}>
-                Features
+              <Link href="/#use-cases" className="hover:underline" onClick={() => setIsMobileMenuOpen(false)}>
+                Use cases
               </Link>
             </li>
             <li>

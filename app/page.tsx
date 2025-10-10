@@ -159,7 +159,7 @@ export default function LandingPage() {
 
       {/* Features Section */}
       <div
-        id="features"
+        id="how-it-works"
         className="relative mx-auto max-w-7xl pt-20 lg:pt-96 max-lg:pb-10 select-none bg-card border-2 border-border rounded-xl overflow-hidden scroll-mt-24"
       >
         <div className="mx-auto max-w-2xl sm:text-center px-5 lg:px-0">
@@ -170,7 +170,42 @@ export default function LandingPage() {
             {/* Intelligent job hunting. */}
           </p>
         </div>
-        <div className="grid lg:grid-cols-2 mt-32 mb-24 lg:mb-0 pointer-events-none gap-y-20 lg:gap-x-8 lg:gap-y-4 rounded-x">
+        {/* Mobile Layout */}
+        <div className="lg:hidden mt-32 mb-24 pointer-events-none space-y-8">
+          <div>
+            <Image
+              src="/first_draft.png"
+              alt="First draft"
+              width={1200}
+              height={900}
+              className="w-full h-auto rounded-xl"
+            />
+            <div className="px-8 mt-4">
+              <h2 className="text-2xl font-medium break-words text-foreground">First draft</h2>
+              <p className="w-full mt-3 text-base leading-5 text-foreground break-words">
+                Share context (notes, message threads, documents), give instructions, and we'll generate a first draft (like ChatGPT — nothing special).
+              </p>
+            </div>
+          </div>
+          <div>
+            <Image
+              src="/edit_reprompt.png"
+              alt="Edit and re-prompt"
+              width={1200}
+              height={600}
+              className="w-full h-auto rounded-xl"
+            />
+            <div className="px-8 mt-4">
+              <h2 className="text-2xl font-medium break-words text-foreground">Edit and re-prompt</h2>
+              <p className="w-full mt-3 text-base leading-5 text-foreground break-words">
+              Edit in-line (no copy/paste required). Select a text, what needs to change, and we'll revise accordingly.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Desktop Layout */}
+        <div className="hidden lg:grid lg:grid-cols-2 mt-32 mb-24 lg:mb-0 pointer-events-none gap-y-20 lg:gap-x-8 lg:gap-y-4 rounded-x">
           <div className="contents">
             <Image
               src="/first_draft.png"
@@ -325,7 +360,7 @@ export default function LandingPage() {
 
       {/* Use Cases Section */}
       <div
-        id="usage"
+        id="use-cases"
         className="mx-auto max-w-7xl pt-32 select-none pointer-events-none bg-background"
       >
         <h1 className="text-5xl font-medium max-w-xl m-8 text-foreground">
@@ -434,7 +469,7 @@ export default function LandingPage() {
         <div className="relative flex flex-col items-center lg:text-center z-[1]">
           <Logo className="w-24 h-24 text-primary mb-6" />
           <span className="uppercase text-foreground tracking-tight text-lg">Relay</span>
-          <h1 className="mt-2 text-5xl font-medium tracking-tight text-balance text-foreground sm:text-6xl">
+          <h1 className="mt-2 text-3xl font-medium tracking-tight text-balance text-foreground sm:text-6xl text-center">
             Supercharged writing.
           </h1>
           <div className="grid items-center gap-y-2.5 mt-10 justify-center text-center">

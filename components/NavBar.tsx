@@ -30,7 +30,7 @@ export default function NavBar() {
                 className="flex items-center gap-x-2 transition border-b border-transparent hover:border-white"
                 href="/"
               >
-                <Logo className="w-8 h-8 text-foreground" />
+                <Logo className="w-6 h-6 text-foreground" />
                 <span className="text-lg font-medium transition text-foreground align-middle">Relay</span>
               </Link>
             </div>

@@ -435,7 +435,7 @@ export default function LandingPage() {
           <Logo className="w-24 h-24 text-primary mb-6" />
           <span className="uppercase text-foreground tracking-tight text-lg">Relay</span>
           <h1 className="mt-2 text-5xl font-medium tracking-tight text-balance text-foreground sm:text-6xl">
-            The AI notepad.
+            Supercharged writing.
           </h1>
           <div className="grid items-center gap-y-2.5 mt-10 justify-center text-center">
             <Link href="https://relay-web-57ps.onrender.com/login">

@@ -4,7 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Download, ArrowUpRight, Menu, X } from "lucide-react"
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import NavBar from "@/components/NavBar"
 import Footer from "@/components/Footer"
 import Logo from "@/components/ui/Logo"
@@ -75,11 +75,9 @@ export default function LandingPage() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [heroImageLoaded, setHeroImageLoaded] = useState(false)
   const [isDesktop, setIsDesktop] = useState(false)
-  const sectionRefs = [
-    useRef<HTMLDivElement>(null),
-    useRef<HTMLDivElement>(null),
-    useRef<HTMLDivElement>(null)
-  ]
+  const sectionRef0 = useRef<HTMLDivElement>(null)
+  const sectionRef1 = useRef<HTMLDivElement>(null)
+  const sectionRef2 = useRef<HTMLDivElement>(null)
 
   // Check if desktop on mount
   useEffect(() => {
@@ -97,7 +95,8 @@ export default function LandingPage() {
   }, [])
 
   useEffect(() => {
-    const observers = sectionRefs.map((ref, idx) => {
+    const refs = [sectionRef0, sectionRef1, sectionRef2]
+    const observers = refs.map((ref, idx) => {
       return new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) setActiveSection(idx);
@@ -105,7 +104,7 @@ export default function LandingPage() {
         { threshold: 0.5 }
       );
     });
-    sectionRefs.forEach((ref, idx) => {
+    refs.forEach((ref, idx) => {
       if (ref.current) observers[idx].observe(ref.current);
     });
     return () => observers.forEach((observer) => observer.disconnect());
@@ -156,7 +155,8 @@ export default function LandingPage() {
             {/* Relay makes drafting easy by through an AI-powered text editor. */}
           </p>
           <div className="grid items-center justify-center gap-y-2.5 mt-10">
-            <Link href="https://relay-web-57ps.onrender.com/login">
+            {/* <Link href="https://relay-web-57ps.onrender.com/login"> */}
+            <Link href="/">
               <Button className="flex group items-center gap-x-2 rounded-lg bg-primary text-primary-foreground px-10 py-3 text-md font-medium shadow-xs outline-none hover:-translate-y-0.5 transition hover:scale-[100.5%] hover:bg-primary/90">
                 <span className="transition">Get Started</span>
               </Button>
@@ -204,7 +204,7 @@ export default function LandingPage() {
             <div className="px-8 mt-4">
               <h2 className="text-2xl font-medium break-words text-foreground">First draft</h2>
               <p className="w-full mt-3 text-base leading-5 text-foreground break-words">
-                Share context (notes, message threads, documents), give instructions, and we'll generate a first draft (like ChatGPT — nothing special).
+                Share context (notes, message threads, documents), give instructions, and we&apos;ll generate a first draft (like ChatGPT — nothing special).
               </p>
             </div>
           </div>
@@ -219,7 +219,7 @@ export default function LandingPage() {
             <div className="px-8 mt-4">
               <h2 className="text-2xl font-medium break-words text-foreground">Edit and re-prompt</h2>
               <p className="w-full mt-3 text-base leading-5 text-foreground break-words">
-              Edit in-line (no copy/paste required). Select a text, what needs to change, and we'll revise accordingly.
+              Edit in-line (no copy/paste required). Select a text, what needs to change, and we&apos;ll revise accordingly.
               </p>
             </div>
           </div>
@@ -249,7 +249,7 @@ export default function LandingPage() {
             <div className="px-8 -mt-16 lg:mt-0 lg:px-12 w-full lg:w-auto rounded-xl">
               <h2 className="text-2xl font-medium break-words text-foreground">First draft</h2>
               <p className="w-full lg:w-112 mt-3 text-base leading-5 text-foreground break-words">
-                Share context (notes, message threads, documents), give instructions, and we'll generate a first draft (like ChatGPT — nothing special).
+                Share context (notes, message threads, documents), give instructions, and we&apos;ll generate a first draft (like ChatGPT — nothing special).
               </p>
             </div>
           </div>
@@ -257,7 +257,7 @@ export default function LandingPage() {
             <div className="px-8 -mt-16 lg:mt-0 lg:px-12 w-full lg:w-auto rounded-xl">
               <h2 className="text-2xl font-medium break-words text-foreground">Edit and re-prompt</h2>
               <p className="w-full lg:w-112 mt-3 text-base leading-5 text-foreground break-words">
-              Edit in-line (no copy/paste required). Select a text, what needs to change, and we'll revise accordingly.
+              Edit in-line (no copy/paste required). Select a text, what needs to change, and we&apos;ll revise accordingly.
               </p>
             </div>
           </div>
@@ -273,7 +273,7 @@ export default function LandingPage() {
           <div className="lg:absolute pl-8 mt-8 lg:mt-0 lg:pl-0 bottom-16 left-10 pr-10 w-full lg:w-auto">
             <h2 className="text-2xl font-medium break-words text-foreground">Intelligent styling</h2>
             <p className="w-full lg:w-112 mt-3 text-base leading-5 text-foreground break-words">
-              As you create drafts for different channels, we'll learn your voice and apply it accordingly. Professsional, but human.
+              As you create drafts for different channels, we&apos;ll learn your voice and apply it accordingly. Professsional, but human.
             </p>
           </div>
           <div className="hidden lg:block absolute bg-background w-1 h-8.5 bottom-34 -left-[1px]"></div>
@@ -283,12 +283,16 @@ export default function LandingPage() {
       {/* Testimonial Section */}
       <div className="mx-auto max-w-7xl sm:text-center py-36 bg-background text-center">
         <p className="text-center mt-2 text-4xl font-medium tracking-tight text-pretty text-foreground sm:text-5xl sm:text-balance">
-          "Makes writing with ChatGPT 10x easier."
+          &quot;Makes writing with ChatGPT 10x easier.&quot;
           {/* Reality meets future. */}
           {/* Get that bag. */}
         </p>
-        <Link
+        {/* <Link
           href="https://relay-web-57ps.onrender.com/login"
+          className="inline-flex items-center gap-x-2 rounded-lg bg-primary mt-12 text-primary-foreground px-10 py-3 text-md font-semibold shadow-xs outline-none hover:-translate-y-0.5 transition hover:scale-[100.5%] hover:bg-primary/90"
+        > */}
+        <Link
+          href="/"
           className="inline-flex items-center gap-x-2 rounded-lg bg-primary mt-12 text-primary-foreground px-10 py-3 text-md font-semibold shadow-xs outline-none hover:-translate-y-0.5 transition hover:scale-[100.5%] hover:bg-primary/90"
         >
           <span className="transition">Get Started</span>
@@ -424,7 +428,7 @@ export default function LandingPage() {
           </div>
           {/* Mobile images */}
           <div className="w-full md:w-1/2 md:ml-auto">
-            <div ref={sectionRefs[0]} className="md:min-h-screen min-h-[45rem] flex items-center overflow-hidden">
+            <div ref={sectionRef0} className="md:min-h-screen min-h-[45rem] flex items-center overflow-hidden">
               <div className="max-w-xl">
                 <div className="p-8 lg:pl-20">
                   <h2 className="text-4xl font-medium mb-4 text-foreground">Email</h2>
@@ -443,7 +447,7 @@ export default function LandingPage() {
                 </div>
               </div>
             </div>
-            <div ref={sectionRefs[1]} className="md:min-h-screen min-h-[45rem] flex items-center overflow-hidden">
+            <div ref={sectionRef1} className="md:min-h-screen min-h-[45rem] flex items-center overflow-hidden">
               <div className="max-w-xl">
                 <div className="p-8 lg:pl-20">
                   <h2 className="text-4xl font-medium mb-4 text-foreground">Internal Messages & Memos</h2>
@@ -462,7 +466,7 @@ export default function LandingPage() {
                 </div>
               </div>
             </div>
-            <div ref={sectionRefs[2]} className="md:min-h-screen min-h-[45rem] flex items-center overflow-hidden">
+            <div ref={sectionRef2} className="md:min-h-screen min-h-[45rem] flex items-center overflow-hidden">
               <div className="max-w-xl">
                 <div className="p-8 lg:pl-20">
                   <h2 className="text-4xl font-medium mb-4 text-foreground">Documents</h2>
@@ -494,7 +498,8 @@ export default function LandingPage() {
             Supercharged writing.
           </h1>
           <div className="grid items-center gap-y-2.5 mt-10 justify-center text-center">
-            <Link href="https://relay-web-57ps.onrender.com/login">
+            {/* <Link href="https://relay-web-57ps.onrender.com/login"> */}
+            <Link href="/">
               <Button className="flex group items-center gap-x-2 rounded-lg bg-primary text-primary-foreground px-10 py-3 text-md font-semibold shadow-xs outline-none hover:-translate-y-0.5 transition hover:scale-[100.5%] hover:bg-primary/90">
                 <span className="transition">Get Started</span>
               </Button>

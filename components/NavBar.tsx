@@ -66,15 +66,28 @@ export default function NavBar() {
               </Link>
             </div>
             <div className="hidden lg:flex lg:flex-1 lg:justify-end items-center gap-x-5">
-              <Link
+              {/* <Link
                 className="text-md/6 font-medium text-foreground transition border-b border-transparent hover:border-foreground"
                 href="https://relay-web-57ps.onrender.com/login"
               >
                 Log in
-              </Link>
+              </Link> */}
               <Link
+                className="text-md/6 font-medium text-foreground transition border-b border-transparent hover:border-foreground"
+                href="/"
+              >
+                Log in
+              </Link>
+              {/* <Link
                 className="flex items-center px-2 py-1 gap-x-1 text-md/6 font-medium rounded-lg text-primary-foreground bg-primary hover:bg-primary/90"
                 href="https://relay-web-57ps.onrender.com/login"
+              >
+                Sign up
+                <ArrowUpRight className="w-4 h-4" />
+              </Link> */}
+              <Link
+                className="flex items-center px-2 py-1 gap-x-1 text-md/6 font-medium rounded-lg text-primary-foreground bg-primary hover:bg-primary/90"
+                href="/"
               >
                 Sign up
                 <ArrowUpRight className="w-4 h-4" />
@@ -108,8 +121,10 @@ export default function NavBar() {
             </li>
           </ul>
           <div className="flex gap-4 w-full mb-[calc(2rem+env(safe-area-inset-bottom))]">
-            <Link href="https://relay-web-57ps.onrender.com/login" className="w-full text-center py-2.5 bg-background text-foreground rounded-lg font-medium border border-foreground border-20" onClick={() => setIsMobileMenuOpen(false)}>Log in</Link>
-            <Link href="https://relay-web-57ps.onrender.com/login" className="w-full text-center py-2.5 bg-primary text-primary-foreground rounded-lg font-semibold" onClick={() => setIsMobileMenuOpen(false)}>Sign up</Link>
+            {/* <Link href="https://relay-web-57ps.onrender.com/login" className="w-full text-center py-2.5 bg-background text-foreground rounded-lg font-medium border border-foreground border-20" onClick={() => setIsMobileMenuOpen(false)}>Log in</Link> */}
+            <Link href="/" className="w-full text-center py-2.5 bg-background text-foreground rounded-lg font-medium border border-foreground border-20" onClick={() => setIsMobileMenuOpen(false)}>Log in</Link>
+            {/* <Link href="https://relay-web-57ps.onrender.com/login" className="w-full text-center py-2.5 bg-primary text-primary-foreground rounded-lg font-semibold" onClick={() => setIsMobileMenuOpen(false)}>Sign up</Link> */}
+            <Link href="/" className="w-full text-center py-2.5 bg-primary text-primary-foreground rounded-lg font-semibold" onClick={() => setIsMobileMenuOpen(false)}>Sign up</Link>
           </div>
           </nav>
         </div>

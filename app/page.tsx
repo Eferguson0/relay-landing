@@ -151,7 +151,7 @@ export default function LandingPage() {
             </span>
           </h1>
           <p className="mx-auto max-w-lg md:max-w-2xl mt-8 text-md sm:text-lg md:text-xl font-normal text-balance text-muted-foreground">
-            Relay streamlines drafting by allowing you to generate and edit content from your favorite AI chatbots — all in one place.
+            Relay streamlines drafting by allowing you to generate and edit content from your favorite LLMs — all in one place.
             {/* Relay makes drafting easy by through an AI-powered text editor. */}
           </p>
           <div className="grid items-center justify-center gap-y-2.5 mt-10">
@@ -283,7 +283,7 @@ export default function LandingPage() {
       {/* Testimonial Section */}
       <div className="mx-auto max-w-7xl sm:text-center py-36 bg-background text-center">
         <p className="text-center mt-2 text-4xl font-medium tracking-tight text-pretty text-foreground sm:text-5xl sm:text-balance">
-          &quot;Makes writing with ChatGPT 10x easier.&quot;
+          &quot;Makes drafting with AI 10x easier.&quot;
           {/* Reality meets future. */}
           {/* Get that bag. */}
         </p>

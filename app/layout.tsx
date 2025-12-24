@@ -6,9 +6,17 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.dev',
+  title: 'Relay: The AI Notepad',
+  description: 'Relay – the AI notepad for drafting and editing across chatbots in one place.',
+  generator: 'Relay',
+  icons: {
+    icon: [
+      { url: '/relay_broswer_tab.png', sizes: '32x32', type: 'image/png' },
+      { rel: 'icon', url: '/favicon.svg', type: 'image/svg+xml' },
+    ],
+    shortcut: [{ url: '/relay_broswer_tab.png', sizes: '32x32', type: 'image/png' }],
+    apple: [{ url: '/relay_broswer_tab.png', sizes: '32x32', type: 'image/png' }],
+  },
 }
 
 export default function RootLayout({
